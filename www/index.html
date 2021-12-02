@@ -1,0 +1,21 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="/xuni/bundle.js/"></script>
+
+    <script>
+      let templateStr = '<h1>今天吃了{{food}}，真的好{{mood}}</h1>'
+      let data = {
+        food: '面',
+        mood: '开心'
+      }
+      let templateStr1 = `我的爱好是:{{#arr}}{{.}}和{{/arr}}们`
+      LMH_TemplateEngine.render(templateStr1, data)
+    </script>
+  </body>
+</html>

@@ -4,7 +4,7 @@ import nestTokens from './nestTokens'
 export default function parseTemplateToTokens(templateStr) {
   //   创建扫描器
   let myScan = new Scanner(templateStr)
-  let tokens = []
+  let tokens = new Array()
   let word
   while (!myScan.eos()) {
     //   收集标记出现之前的文字
@@ -30,7 +30,13 @@ export default function parseTemplateToTokens(templateStr) {
       }
     }
     myScan.scan('}}')
+
+    console.log([...tokens])
   }
 
-  return nestTokens(tokens)
+  // console.log('零散的token', tokens)
+  let res = nestTokens(tokens)
+  // console.log('this is res', res)
+  console.log('this is res', res)
+  return res
 }

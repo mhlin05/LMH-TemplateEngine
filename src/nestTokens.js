@@ -9,6 +9,8 @@ export default function nestTokens(tokens) {
   //   收集器 天生指向nestedTokens结果数组，引用类型值，所以指向的是同一个数组
   let collector = nestedTokens
 
+  // console.log('this is tokens 未处理', tokens)
+
   for (let i = 0; i < tokens.length; i++) {
     let token = tokens[i]
 

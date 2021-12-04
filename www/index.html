@@ -6,16 +6,56 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="con"></div>
     <script src="/xuni/bundle.js/"></script>
 
     <script>
-      let templateStr = '<h1>今天吃了{{food}}，真的好{{mood}}</h1>'
-      let data = {
-        food: '面',
-        mood: '开心'
+      var templateStr = `
+        <ul>
+            {{#arr}}
+                <li>
+                    <div c2lass='hd'>{{name}}的基本信息</div>
+                    <div class='bd'>
+                        <p>姓名：{{name}}</p>
+                        <p>性别：{{sex}}</p>
+                        <p>年龄：{{age}}</p>
+                        <p>爱好:{{#hobbies}}
+                          <ol>
+                            <li>{{.}}</li>
+                          </ol>
+                        {{/hobbies}}</p>
+
+                    </div>
+                </li>
+            {{/arr}}
+        </ul>
+      `
+      var data = {
+        arr: [
+          { name: '1号', sex: 'nan', age: 11, hobbies: ['游泳', '吃饭'] },
+          { name: '2号', sex: 'nv', age: 13, hobbies: ['羽毛球', '篮球'] },
+          { name: '3号', sex: 'nan', age: 21, hobbies: ['学习'] }
+        ]
       }
-      let templateStr1 = `我的爱好是:{{#arr}}{{.}}和{{/arr}}们`
-      LMH_TemplateEngine.render(templateStr1, data)
+      // let templateStr = '我爱{{sb}},{{sb}}也爱我'
+      // let data = {
+      //   sb: 'js'
+      // }
+      // let templateStr = `
+      //   <ul>
+      //     {{#arr}}
+      //           <li>
+      //               {{.}}
+      //           </li>
+      //           {{/arr}}
+      //   </ul>
+      // `
+      // let data = {
+      //   arr: ['香蕉', '苹果', '鸭梨']
+      // }
+      let domStr = LMH_TemplateEngine.render(templateStr, data)
+      let domObj = document.getElementById('con')
+      domObj.innerHTML = domStr
     </script>
   </body>
 </html>
